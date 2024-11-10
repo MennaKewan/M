@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اللعبة</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="game2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+</head>
+<body>
+    <img src="images/logo.png" alt="Logo" class="logo move-logo"> 
+    <div id="instructions-container" class="container fade-in">
+        <h1>Put <i class="fas fa-check"></i> (True) or <i class="fas fa-times"></i> (False) in front of the following statements</h1>
+        <p id="instruction-text"></p>
+        <audio id="instruction-audio" src="sounds/instruction2.mp3" playsinline></audio>
+        <button id="instruction-play-button" class="btn btn-primary">Click Here</button>
+    </div>
+
+    <div id="game-container" class="container text-center" style="display: none;">
+        <button id="game-listen-button" class="btn btn-warning mb-4"><i class="fas fa-volume-up"></i></button>
+        <div id="game-score" class="mb-4">Score: <span id="score-value">0</span></div>
+        <div id="game-question-box" class="mb-4">
+            <div id="game-question-text">question</div>
+        </div>
+        <div id="game-image-placeholder" class="mb-4">
+            <img id="game-question-image" src="" alt="Question Image" class="img-fluid">
+        </div>
+        <div id="game-answers" class="d-flex justify-content-around mb-4">
+            <button class="game-answer-btn btn btn-success" id="true-btn">
+                <i class="fas fa-check"></i> True
+            </button>
+            <button class="game-answer-btn btn btn-danger" id="false-btn">
+                <i class="fas fa-times"></i> False
+            </button>
+        </div>
+        <div id="game-confetti" class="hidden"></div>
+    </div>
+
+    <audio id="game-question-audio" src="Sound Ai/What Does This Mean.mp3"></audio>
+    <audio id="game-wrong-audio" src="sounds/false.mp3"></audio>
+
+    <script src="game2.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+body {
+    font-family: "Protest Strike", sans-serif;
+    background: url('images/bg/bbgg.jpg') no-repeat center center fixed; 
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+.grade-container {
+    background-color: rgba(63, 63, 63, 0.8);
+    padding: 1.5vw 7vw; 
+    border-radius: 20px;
+    box-shadow: 0px 0.5vw 1vw rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: popUp 0.5s ease-out;
+}
+
+@keyframes popUp {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+h1 {
+    font-size: 3.5vw;
+    color: #68ef3f;
+    margin-bottom: 2vw;
+    animation: bounce 1.5s infinite alternate;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+.player-info {
+    font-size: 4vw;
+    color: #ffffff;
+    margin-bottom: 3vw;
+}
+
+button {
+    margin: 1vw;
+    padding: 1vw 2vw;
+    font-size: 2vw;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #7de36b;
+    color: #000;
+    border: 0.4vw solid  #65bf55;
+    border-radius: 50px;
+    box-shadow: 0 0.5vw 1.5vw rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #65bf55;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+#fireworksCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    background: transparent;
+}
+
+@media (max-width: 768px) {
+    .grade-container {
+        padding: 13vw;
+    }
+
+    h1 {
+        font-size: 5vw;
+    }
+
+    .player-info {
+        font-size: 5vw;
+    }
+
+    button {
+        font-size: 3vw;
+        padding: 2vw 4vw;
+    }
+}

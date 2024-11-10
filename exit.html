@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun time</title>
+    <link rel="stylesheet" href="exit.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="grade-container">
+        <h1>Your Score</h1>
+        <div class="player-info">
+            <p><strong>Mark:</strong> <span id="score-display">0</span>/8</p>
+        </div>
+        <button id="homeBtn">Play again</button>
+        <button id="exitBtn">Exit</button>
+    </div>
+
+    <canvas id="fireworksCanvas"></canvas> 
+
+    <audio id="win-sound" src="sounds/You win.mp3"></audio>
+
+
+    <script>
+        window.addEventListener('load', () => {
+            const winSound = document.getElementById('win-sound');
+            winSound.play();
+
+            const score = localStorage.getItem('score') || 0;
+            document.getElementById('score-display').textContent = score;
+
+            
+            launchFireworks();
+
+            // When the sound ends, stop the fireworks and restart the process
+            winSound.addEventListener('ended', () => {
+                clearInterval(fireworksInterval);
+                setTimeout(() => {
+                    winSound.play(); 
+                    launchFireworks(); 
+                }, 500); 
+            });
+        });
+
+        let fireworksInterval;
+
+        function launchFireworks() {
+            const canvas = document.getElementById('fireworksCanvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const particles = [];
+            const colors = ['#ff0044', '#ffcc00', '#00ccff', '#00ff66'];
+
+            function Firework(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 3 + 3;  
+                this.speedX = (Math.random() * 4) - 2; 
+                this.speedY = (Math.random() * 4) - 2;
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+
+            Firework.prototype.update = function() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.size -= 0.01; 
+            };
+
+            Firework.prototype.draw = function() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            };
+
+            function createFirework() {
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                for (let i = 0; i < 75; i++) {  
+                    particles.push(new Firework(x, y));
+                }
+            }
+
+            function animateFireworks() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+
+                    if (particles[i].size <= 0) {
+                        particles.splice(i, 1);
+                        i--;
+                    }
+                }
+                requestAnimationFrame(animateFireworks);
+            }
+
+            fireworksInterval = setInterval(createFirework, 300); 
+            animateFireworks();
+        }
+
+        document.getElementById('homeBtn').addEventListener('click', () => {
+            window.location.href = 'index.html'; 
+        });
+
+        document.getElementById('exitBtn').addEventListener('click', () => {
+            window.location.href = 'https://englisheasy.net/dashboard';
+        });
+    </script>
+</body>
+</html>

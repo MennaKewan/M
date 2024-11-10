@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="instructions.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+</head>
+<body>
+    <!-- Start Page Content -->
+    <div id="start-container" >
+        <img src="images/logo.png" alt="Logo" id="home-logo" > 
+        <button id="startBtn" class="btn btn-primary mt-4">Play</button>
+    </div>
+
+    <!-- Instructions Content -->
+    <div id="instructions-container" class="instructions-container container fade-in" style="display: none;">
+        <img src="images/logo.png" alt="Logo" class="logo instructions-logo" > 
+        <h1>Listen and choose the correct answer</h1>
+        <p id="instruction-text"></p>
+        <audio id="instruction-audio" src="sounds/coorect.mp3" playsinline></audio>
+    </div>
+
+    <!-- Game Content -->
+    <div id="game-container" class="game-container container text-center" style="display: none;">
+        <img src="images/logo.png" alt="Logo" class="logo game-logo"> 
+        <div id="game-score" class="mb-4">Score: <span id="game-score-value">0</span></div>
+        <button id="game-listen-button" class="btn btn-warning mb-4"> <i class="fas fa-volume-up"></i></button>
+        <div id="game-question-box" class="mb-4">
+            <div id="game-question-text">question</div>
+        </div>
+        <div id="game-image-placeholder" class="mb-4">
+            <img id="game-question-image" src="" alt="Question Image" class="img-fluid">
+        </div>
+        <div id="game-answers" class="d-flex justify-content-around mb-4">
+            <button class="game-answer-btn btn btn-primary" id="game-answer1"></button>
+            <button class="game-answer-btn btn btn-primary" id="game-answer2"></button>
+        </div>
+        <div id="game-confetti" class="hidden"></div>
+    </div>
+
+    <audio id="game-question-audio" src="Sound Ai/What Does This Mean.mp3"></audio>
+    <audio id="game-wrong-audio" src="sounds/false.mp3"></audio>
+
+    <script src="instruction.js"></script>
+</body>
+</html>
